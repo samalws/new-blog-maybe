@@ -127,3 +127,4 @@ we don't check if everything is valid before returning its type (most notably Fo
 and we still don't know what equality of terms means.
 So let's deal with these problems next.
 ## Equality of Terms
+## Some Mini Functions
