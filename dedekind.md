@@ -45,10 +45,10 @@ Now let's figure out some operations on Dedekind cuts.
 The first, and most basic, operation is negation.
 For this, we'll take advantage of the fact that `-n < m` if and only if `n > -m`, and `-n > m` if and only if `n < -m`:
 ```Haskell
-negate :: Dedekind -> Dedekind
-negate n = Dedekind (\m -> n `gt` (-m)) (\m -> n `lt` (-m))
+neg :: Dedekind -> Dedekind
+neg n = Dedekind (\m -> n `gt` (-m)) (\m -> n `lt` (-m))
 ```
-In set notation, this means `negate n = ({m | n > -m}, {m | n < -m}) = ({m | -n < m}, {m | -n > m}) = n`, which is what we wanted.
+In set notation, this means `neg n = ({m | n > -m}, {m | n < -m}) = ({m | -n < m}, {m | -n > m}) = n`, which is what we wanted.
 
 Next, let's figure out how to do addition of a Dedekind cut and a rational number
 (it turns out addition of two Dedekind cuts is really hard, so we'll do that in a later post).
@@ -65,7 +65,7 @@ This time, we need to add some edge cases for 0 and negatives:
 mul :: Dedekind -> Rational -> Dedekind
 n `mul` m
   | m == 0 = rationalDedekind 0
-  | m < 0  = (negate n) `mul` (-m) -- n*m = (-n)*(-m)
+  | m < 0  = (neg n) `mul` (-m) -- n*m = (-n)*(-m)
   | otherwise = Dedekind (\a -> n `lt` (a / m)) (\a -> n `gt` (a / m)) -- ({a | n < a/m}, {a | n > a/m}) = ({a | n*m < a}, {a | n*m > a}) = n*m
 ```
 
@@ -98,7 +98,7 @@ This algorithm is guaranteed to terminate, but runs in O(n) time. We'll figure o
 Ceiling can be defined by using the identity `-(ceil n) = flr (-n)`:
 ```Haskell
 ceil :: Dedekind -> Int
-ceil n = -(floor (negate n))
+ceil n = -(floor (neg n))
 ```
 
 ## Testing it out
