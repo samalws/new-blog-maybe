@@ -98,7 +98,7 @@ This algorithm is guaranteed to terminate, but runs in O(n) time. We'll figure o
 Ceiling can be defined by using the identity `-(ceil n) = flr (-n)`:
 ```Haskell
 ceil :: Dedekind -> Int
-ceil n = -(floor (neg n))
+ceil n = -(flr (neg n))
 ```
 
 ## Testing it out
@@ -124,11 +124,11 @@ Now let's test our code with a few test cases...
 > -- It works!
 > -- flr runs in O(n) time, so if we tried to run flr (m `mul` 10000) it would take a really long time
 > -- Just for fun, let's try to represent (cube root of 2) + 3.5 as a Dedekind cut...
-> p = Dedekind (\m -> 2 < m*m*m) (\m -> 2 < m*m*m) -- cube root(2) = 1.25994...
+> p = Dedekind (\m -> 2 < m*m*m) (\m -> 2 > m*m*m) -- cube root(2) = 1.25994...
 > q = p `add` 3.5 -- cube root(2) + 3.5 = 4.75994...
 > flr q
-1
+4
 > flr (q `mul` 1000)
-1259
+4759
 > -- Success! We've gotten the first 4 digits of (cube root of 2) + 3.5
 ```
