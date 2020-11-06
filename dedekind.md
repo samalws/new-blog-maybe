@@ -48,7 +48,7 @@ For this, we'll take advantage of the fact that `-n < m` if and only if `n > -m`
 neg :: Dedekind -> Dedekind
 neg n = Dedekind (\m -> n `gt` (-m)) (\m -> n `lt` (-m))
 ```
-In set notation, this means `neg n = ({m | n > -m}, {m | n < -m}) = ({m | -n < m}, {m | -n > m}) = n`, which is what we wanted.
+In set notation, this means `neg n = ({m | n > -m}, {m | n < -m}) = ({m | -n < m}, {m | -n > m}) = -n`, which is what we wanted.
 
 Next, let's figure out how to do addition of a Dedekind cut and a rational number
 (it turns out addition of two Dedekind cuts is really hard, so we'll do that in a later post).
