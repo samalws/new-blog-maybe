@@ -10,7 +10,7 @@ First, let's write out the definition of a Dedekind cut, in Haskell:
 ```Haskell
 data Dedekind = Dedekind { lt :: Rational -> Bool, gt :: Rational -> Bool }
 ```
-This matches pretty closely with how I defined Dedekind cuts earlier, except instead of providing sets of rationals greater and less than the number, we instead give less than and greater than operations.
+This matches pretty closely with how I defined Dedekind cuts earlier, except instead of providing sets of rationals greater and less than the number, we instead give "less than" (`lt`) and "greater than" (`gt`) operators.
 We'll see how this ends up easier to work with later.
 Next, let's add some helper functions helping us relate Dedekinds to Rationals:
 ```Haskell
