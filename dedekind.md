@@ -1,6 +1,6 @@
 # Dedekind Cuts in Haskell, Part 1
 Dedekind cuts are really elegant.
-In essence, you can describe any real number (i.e., irrational or rational) by just providing the set of rational numbers it's less than, and the set of rational numbers it's greater than.
+For those of you unfamiliar with Dedekind cuts, it's possible to describe any real number (i.e., irrational or rational) by just providing the set of rational numbers it's less than, and the set of rational numbers it's greater than.
 For example, 1 expressed as a Dedekind cut would be `({n | 1 < n}, {n | 1 > n})`.
 The square root 2 (an irrational number!) would be expressed as a Dedekind cut as `({n | n > 0 and 2 < n*n}, {n | n < 0 or 2 > n*n})`.
 It turns out that all the operations you'd expect to work on numbers (+, *, ^, etc) can be defined on Dedekind cuts, too.
